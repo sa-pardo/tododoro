@@ -22,6 +22,7 @@ Ya que la técnica pomodoro se encofoca en el trabajo en actividades especificas
 ## Tecnologias
 
 - React 17.0.1
+- create-react-app 4.0.1
 - Figma (desarrollo de UI)
 
 ## Creditos
