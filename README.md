@@ -11,6 +11,8 @@ Ya que la técnica pomodoro se encofoca en el trabajo en actividades especificas
 
 ## Features
 
+Puedes encontrar un documento detallando el alcance del proyecto en [ALCANCE.md](./ALCANCE.md)
+
 - Lista de tareas TO-DO
 - Temporizador con funcionalidades pomodoro.
 - Notificación al termino de cada periodo.
