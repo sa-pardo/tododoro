@@ -9,6 +9,9 @@ Ya que la técnica pomodoro se encofoca en el trabajo en actividades especificas
 
 ## Screenshots
 
+![Pagina principal](./images/pagina_inicial.jpg)
+Pagina inicial y unica.
+
 ## Features
 
 Puedes encontrar un documento detallando el alcance del proyecto en [ALCANCE.md](./ALCANCE.md)
