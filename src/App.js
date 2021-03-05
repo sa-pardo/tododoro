@@ -1,8 +1,15 @@
+import { useState } from "react";
+import Todo from "./components/Todo";
 
 function App() {
+  const [activeTask, setActiveTask] = useState({});
   return (
-    <div className="App">
-    </div>
+    <>
+      <h1>{activeTask.title}</h1>
+      <div className="App">
+        <Todo setActiveTask={setActiveTask} />
+      </div>
+    </>
   );
 }
 
