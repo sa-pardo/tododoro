@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
 
+:root {
+  --strong-dark: #575050;
+  --normal-dark: #746a6a;
+  --light-dark: #e5e5e5;
+}
+
 * {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -19,31 +25,29 @@
   font-weight: bold;
 }
 
-.task-list {
+.todo-list {
   list-style-type: none;
   padding: 0px;
 }
 
 .task {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--light-dark);
   padding: 10px;
   padding-left: 25px;
   display: flex;
 }
 
-form {
+.todo-form {
   display: flex;
   width: 100%;
 }
 
-form span {
+.center-flex {
   justify-content: center;
   align-items: center;
 }
 
-#task-input {
-  background-color: inherit;
-  border: none;
+.task-input {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
   font-size: 12px;
@@ -52,9 +56,12 @@ form span {
   width: 89%;
 }
 
-#task-input:focus {
-  outline: none;
+.no-border {
   border: none;
+}
+
+.task-input:focus {
+  outline: none;
 }
 
 .task-title {
@@ -67,9 +74,30 @@ form span {
 
 .task-title-done {
   position: relative;
+  animation: blacktolight 150ms linear forwards;
 }
 
-@keyframes strike {
+.task-title-done::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: var(--strong-dark);
+  animation: strikethrough 150ms linear;
+}
+
+@keyframes blacktolight {
+  0% {
+    color: black;
+  }
+  100% {
+    color: var(--strong-dark);
+  }
+}
+
+@keyframes strikethrough {
   0% {
     width: 0;
     left: 50%;
@@ -80,27 +108,12 @@ form span {
   }
 }
 
-.task-title-done::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  width: 100%;
-  height: 1px;
-  background: #746a6a;
-  animation: strike 150ms linear;
+.no-select {
+  user-select: none;
 }
 
-.task-checker {
-  background: inherit;
-  border: none;
+.pointer {
   cursor: pointer;
-  user-select: none;
-
-  width: 25px;
-  height: 25px;
-  font-size: 30px;
-  font-weight: 100;
 }
 
 .task-done::after {
@@ -109,13 +122,13 @@ form span {
   width: 18px;
   left: 4px;
   top: -23px;
-  color: #42a5e3;
   cursor: pointer;
-  animation: spin 130ms linear;
+  animation: increase 130ms linear;
+  z-index: -1;
   display: inline-block;
 }
 
-@keyframes spin {
+@keyframes increase {
   0% {
     transform: scale(0.1);
   }
@@ -124,19 +137,18 @@ form span {
   }
 }
 
-.circle-not-done::after {
+.task-not-done::after {
   content: url(./assets/tick.svg);
   position: relative;
   width: 18px;
   left: 4px;
   top: -23px;
-  color: #42a5e3;
   cursor: pointer;
-  animation: check 130ms linear forwards;
+  animation: decrease 130ms linear forwards;
   display: inline-block;
 }
 
-@keyframes check {
+@keyframes decrease {
   0% {
     transform: scale(1);
   }
@@ -145,18 +157,12 @@ form span {
   }
 }
 
-.task-done {
-  color: #746a6a;
-}
-
 .trash-icon {
-  color: rgba(0, 0, 0, 0.055);
-  user-select: none;
+  color: var(--light-dark);
 }
 
 .trash-icon:hover {
-  color: rgba(0, 0, 0, 1);
-  cursor: pointer;
+  color: var(--strong-dark);
 }
 
 .circle-size {
@@ -165,32 +171,23 @@ form span {
 }
 
 .add-icon {
-  color: #757575;
-  animation: entrada 400ms;
+  color: var(--normal-dark);
+  animation: spin 400ms;
 }
 
-@keyframes entrada {
+@keyframes spin {
   0% {
     transform: rotate(180deg);
-    color: rgba(0, 0, 0, 0.055);
+    color: var(--light-dark);
   }
   100% {
     transform: rotate(360deg);
-    color: #746a6a;
+    color: var(--normal-dark);
   }
 }
 
 .circle-icon {
   display: flex;
-  color: #757575;
-  animation: salida 300ms;
-}
-
-@keyframes salida {
-  0% {
-    font-size: 1px;
-  }
-  100% {
-    font-size: 24px;
-  }
+  color: var(--normal-dark);
+  animation: increase 300ms;
 }

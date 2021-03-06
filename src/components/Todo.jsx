@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import circle from "../assets/circulo.svg";
+import Circle from "../assets/circulo.svg";
 
 function Todo(props) {
   const [tasks, setTasks] = useState(testTasks);
@@ -39,82 +39,22 @@ function Todo(props) {
     <div className="Todo">
       <h2 className="todo-header">To-Do</h2>
 
-      <ul className="task-list">
+      <ul className="todo-list">
         <li className="task">
-          <form onSubmit={addTask}>
-            {isFocused ? (
-              <span className="material-icons-round add-icon circle-size">
-                add
-              </span>
-            ) : (
-              <span className="material-icons-outlined circle-icon circle-size">
-                fiber_manual_record
-              </span>
-            )}
-            <input
-              type="text"
-              id="task-input"
-              placeholder="Add Task"
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-            />
-          </form>
+          <TaskInput
+            addTask={addTask}
+            isFocusedState={[isFocused, setIsFocused]}
+          />
         </li>
         {tasks.sort(compareByBooleans).map((task) => {
           return (
             <li key={task.id} className="task">
-              {task.isCompleted ? (
-                <>
-                  <div
-                    className="task-done circle-size"
-                    onClick={() => toggleCompletedTask(task)}
-                  >
-                    <img className="task-checker" src={circle} alt="Circle" />
-                  </div>
-                  <p
-                    className="task-title task-title-done"
-                    onClick={() => props.setActiveTask(task)}
-                  >
-                    {task.title}
-                  </p>
-                </>
-              ) : task.isNew ? (
-                <>
-                  <div
-                    className="circle-size"
-                    onClick={() => toggleCompletedTask(task)}
-                  >
-                    <img className="task-checker" src={circle} alt="Circle" />
-                  </div>
-                  <p
-                    className="task-title"
-                    onClick={() => props.setActiveTask(task)}
-                  >
-                    {task.title}
-                  </p>
-                </>
-              ) : (
-                <>
-                  <div
-                    className="circle-size circle-not-done"
-                    onClick={() => toggleCompletedTask(task)}
-                  >
-                    <img className="task-checker" src={circle} alt="Circle" />
-                  </div>
-                  <p
-                    className="task-title"
-                    onClick={() => props.setActiveTask(task)}
-                  >
-                    {task.title}
-                  </p>
-                </>
-              )}
-              <span
-                className="material-icons-outlined trash-icon"
-                onClick={() => removeTask(task.id)}
-              >
-                delete
-              </span>
+              <Task
+                task={task}
+                toggleCompletedTask={toggleCompletedTask}
+                setActiveTask={props.setActiveTask}
+                removeTask={removeTask}
+              />
             </li>
           );
         })}
@@ -122,6 +62,62 @@ function Todo(props) {
     </div>
   );
 }
+
+const TaskInput = (props) => {
+  const [isFocused, setIsFocused] = props.isFocusedState;
+  return (
+    <form className="todo-form" onSubmit={props.addTask}>
+      <span
+        className={`circle-size center-flex ${
+          isFocused
+            ? "material-icons-round add-icon"
+            : "material-icons-outlined circle-icon"
+        }`}
+      >
+        {isFocused ? "add" : "fiber_manual_record"}
+      </span>
+      <input
+        type="text"
+        className="task-input no-border"
+        placeholder="Add Task"
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+      />
+    </form>
+  );
+};
+
+const Task = (props) => {
+  const task = props.task;
+  return (
+    <>
+      <picture
+        className={`circle-size ${
+          task.isCompleted ? "task-done" : task.isNew ? "" : "task-not-done"
+        }`}
+      >
+        <img
+          className="pointer no-select"
+          onClick={() => props.toggleCompletedTask(task)}
+          src={Circle}
+          alt="Circle"
+        />
+      </picture>
+      <p
+        className={`task-title ${task.isCompleted && "task-title-done"}`}
+        onClick={() => props.setActiveTask(task)}
+      >
+        {task.title}
+      </p>
+      <span
+        className="material-icons-outlined pointer no-select trash-icon"
+        onClick={() => props.removeTask(task.id)}
+      >
+        delete
+      </span>
+    </>
+  );
+};
 
 const testTasks = [
   {
