@@ -36,30 +36,33 @@ function Todo(props) {
   };
 
   return (
-    <div className="Todo">
-      <h2 className="todo-header">To-Do</h2>
+    <>
+      <div className="Todo">
+        <h2 className="todo-header">To-Do</h2>
+        <ul className="todo-list">
+          <li className="task">
+            <TaskInput
+              addTask={addTask}
+              isFocusedState={[isFocused, setIsFocused]}
+            />
+          </li>
+          {tasks.sort(compareByBooleans).map((task) => {
+            return (
+              <li key={task.id} className="task">
+                <Task
+                  task={task}
+                  toggleCompletedTask={toggleCompletedTask}
+                  setActiveTask={props.setActiveTask}
+                  removeTask={removeTask}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
 
-      <ul className="todo-list">
-        <li className="task">
-          <TaskInput
-            addTask={addTask}
-            isFocusedState={[isFocused, setIsFocused]}
-          />
-        </li>
-        {tasks.sort(compareByBooleans).map((task) => {
-          return (
-            <li key={task.id} className="task">
-              <Task
-                task={task}
-                toggleCompletedTask={toggleCompletedTask}
-                setActiveTask={props.setActiveTask}
-                removeTask={removeTask}
-              />
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+      {/* <span className="right-credits">Sebastian Pardo</span> */}
+    </>
   );
 }
 
