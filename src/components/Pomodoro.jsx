@@ -68,6 +68,7 @@ function Pomodoro(props) {
             />
           )}
       </div>
+      <span className="credits left-credits no-select">Designed by</span>
     </>
   );
 }

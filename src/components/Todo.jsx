@@ -31,6 +31,7 @@ function Todo(props) {
           })}
         </ul>
       </div>
+      <span className="credits right-credits no-select">Sebastian Pardo</span>
     </>
   );
 }

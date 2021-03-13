@@ -20,9 +20,20 @@
   align-items: center;
 }
 
+.background {
+  background-image: url(./assets/Rectangle.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 54vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -9;
+}
+
 .Todo {
   margin-top: 30vh;
   max-width: 90%;
+  min-width: 50%;
 }
 
 .todo-header {
@@ -34,6 +45,8 @@
 .todo-list {
   list-style-type: none;
   padding: 0px;
+  max-height: 80%;
+  overflow: auto;
 }
 
 .task {
@@ -261,9 +274,9 @@
 }
 
 .left {
-  background-image: url(./assets/Rectangle.svg);
+  /* background-image: url(./assets/Rectangle.svg);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 100%; */
   width: 53vw;
   height: 100vh;
   display: flex;
@@ -296,12 +309,12 @@
 .left-credits {
   position: absolute;
   top: 95%;
-  left: 37%;
+  right: 53%;
   color: #ffffff;
 }
 
 .right-credits {
   position: absolute;
   top: 95%;
-  left: 52%;
+  left: 53%;
 }

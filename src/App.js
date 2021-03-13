@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [activeTask, setActiveTask] = useState({});
-  const [tasks, setTasks] = useState(testTasks);
+  const [tasks, setTasks] = useState([]);
 
   const addTask = (event) => {
     event.preventDefault();
@@ -24,6 +24,9 @@ function App() {
   const removeTask = (id) => {
     let filteredTasks = tasks.filter((task) => task.id !== id);
     setTasks(filteredTasks);
+    if (activeTask.id === id) {
+      setActiveTask({});
+    }
   };
 
   const toggleCompletedTask = (selectedTask) => {
@@ -38,6 +41,7 @@ function App() {
 
   return (
     <>
+      <div className="background"></div>
       <div className="App">
         <div className="left">
           <Pomodoro
@@ -57,31 +61,8 @@ function App() {
           />
         </div>
       </div>
-      <span className="credits left-credits no-select">Designed by</span>
-      <span className="credits right-credits no-select">Sebastian Pardo</span>
     </>
   );
 }
 
 export default App;
-
-const testTasks = [
-  {
-    id: uuidv4(),
-    title: "Hacer presentacion de Minecraft",
-    isCompleted: false,
-    isNew: true,
-  },
-  {
-    id: uuidv4(),
-    title: "Descripcion de tarea importante",
-    isCompleted: true,
-    isNew: false,
-  },
-  {
-    id: uuidv4(),
-    title: "Tarea facil de hacer sin ninguna importancia",
-    isCompleted: true,
-    isNew: false,
-  },
-];
