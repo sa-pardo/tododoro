@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/tododoro/static/css/main.8376ae38.chunk.css",
+    "main.js": "/tododoro/static/js/main.c867c0dc.chunk.js",
+    "main.js.map": "/tododoro/static/js/main.c867c0dc.chunk.js.map",
+    "runtime-main.js": "/tododoro/static/js/runtime-main.83cfbcd9.js",
+    "runtime-main.js.map": "/tododoro/static/js/runtime-main.83cfbcd9.js.map",
+    "static/js/2.53b2e7c2.chunk.js": "/tododoro/static/js/2.53b2e7c2.chunk.js",
+    "static/js/2.53b2e7c2.chunk.js.map": "/tododoro/static/js/2.53b2e7c2.chunk.js.map",
+    "index.html": "/tododoro/index.html",
+    "static/css/main.8376ae38.chunk.css.map": "/tododoro/static/css/main.8376ae38.chunk.css.map",
+    "static/js/2.53b2e7c2.chunk.js.LICENSE.txt": "/tododoro/static/js/2.53b2e7c2.chunk.js.LICENSE.txt",
+    "static/media/Pause.55c6dfae.svg": "/tododoro/static/media/Pause.55c6dfae.svg",
+    "static/media/Play.7a872126.svg": "/tododoro/static/media/Play.7a872126.svg",
+    "static/media/index.css": "/tododoro/static/media/tick.82568834.svg",
+    "static/media/circulo.1de6b56a.svg": "/tododoro/static/media/circulo.1de6b56a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.83cfbcd9.js",
+    "static/js/2.53b2e7c2.chunk.js",
+    "static/css/main.8376ae38.chunk.css",
+    "static/js/main.c867c0dc.chunk.js"
+  ]
+}
