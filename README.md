@@ -1,4 +1,7 @@
-# Tododoro
+
+
+
+# Tododoro <img src="./images/Tododoro_logo.png" width="40px">
 
 Aplicación Web que junta las funcionalidades de una lista TO-DO con un temporizador pomodoro con sesiones de trabajo y descanso.
 
