@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Play from "../assets/Play.svg";
 import Pause from "../assets/Pause.svg";
+import { ActiveTask } from "./Todo";
 
-function Pomodoro() {
+function Pomodoro(props) {
   const [time, setTime] = useState(sessionDurations.workDuration);
   const [isStarted, setIsStarted] = useState(false);
   const [sessionType, setSessionType] = useState("work");
@@ -40,10 +41,7 @@ function Pomodoro() {
         <h2 className="pomodoro-header">Pomodoro</h2>
         {/* <h3>{sessionType}</h3> */}
         <p className="time-left">{computeTime(time)}</p>
-        <div
-          className="controls center-flex"
-          // onClick={() => setIsStarted(!isStarted)}
-        >
+        <div className="controls center-flex">
           {isStarted ? (
             <img
               src={Pause}
@@ -62,6 +60,13 @@ function Pomodoro() {
             />
           )}
         </div>
+        {Object.keys(props.activeTask).length !== 0 &&
+          !props.activeTask.isCompleted && (
+            <ActiveTask
+              task={props.activeTask}
+              toggleCompletedTask={props.toggleCompletedTask}
+            />
+          )}
       </div>
     </>
   );

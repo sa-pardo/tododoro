@@ -1,39 +1,10 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Circle from "../assets/circulo.svg";
 
 function Todo(props) {
-  const [tasks, setTasks] = useState(testTasks);
+  const tasks = props.tasks;
   const [isFocused, setIsFocused] = useState(false);
-
-  const addTask = (event) => {
-    event.preventDefault();
-    let taskInput = event.target[0].value;
-    if (taskInput.length === 0) return;
-    event.target[0].value = "";
-    let task = {
-      id: uuidv4(),
-      title: taskInput,
-      isCompleted: false,
-      isNew: true,
-    };
-    setTasks([task, ...tasks]);
-  };
-
-  const removeTask = (id) => {
-    let filteredTasks = tasks.filter((task) => task.id !== id);
-    setTasks(filteredTasks);
-  };
-
-  const toggleCompletedTask = (selectedTask) => {
-    selectedTask.isCompleted = !selectedTask.isCompleted;
-    selectedTask.isNew = false;
-    setTasks(
-      tasks.map((task) => {
-        return task.id === selectedTask.id ? selectedTask : task;
-      })
-    );
-  };
+  const { addTask, removeTask, toggleCompletedTask } = props.modifyTask;
 
   return (
     <>
@@ -60,8 +31,6 @@ function Todo(props) {
           })}
         </ul>
       </div>
-
-      {/* <span className="right-credits">Sebastian Pardo</span> */}
     </>
   );
 }
@@ -90,7 +59,7 @@ const TaskInput = (props) => {
   );
 };
 
-const Task = (props) => {
+export const Task = (props) => {
   const task = props.task;
   return (
     <>
@@ -107,8 +76,19 @@ const Task = (props) => {
         />
       </picture>
       <p
-        className={`task-title ${task.isCompleted && "task-title-done"}`}
-        onClick={() => props.setActiveTask(task)}
+        key={task.title + task.isCompleted}
+        className={`task-title ${
+          task.isCompleted
+            ? " task-title-done"
+            : task.isNew
+            ? ""
+            : "task-title-not-done"
+        }`}
+        onClick={() => {
+          if (!task.isCompleted) {
+            props.setActiveTask(task);
+          }
+        }}
       >
         {task.title}
       </p>
@@ -122,26 +102,35 @@ const Task = (props) => {
   );
 };
 
-const testTasks = [
-  {
-    id: uuidv4(),
-    title: "Hacer presentacion de Minecraft",
-    isCompleted: false,
-    isNew: true,
-  },
-  {
-    id: uuidv4(),
-    title: "Descripcion de tarea importante",
-    isCompleted: true,
-    isNew: false,
-  },
-  {
-    id: uuidv4(),
-    title: "Tarea facil de hacer sin ninguna importancia",
-    isCompleted: true,
-    isNew: false,
-  },
-];
+export const ActiveTask = (props) => {
+  const task = props.task;
+  return (
+    <div
+      style={{
+        display: "flex",
+        marginTop: 30,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <picture
+        className={`circle-size ${
+          task.isCompleted ? "task-done" : task.isNew ? "" : "task-not-done"
+        }`}
+      >
+        <img
+          className="pointer no-select"
+          onClick={() => props.toggleCompletedTask(task)}
+          src={Circle}
+          alt="Circle"
+        />
+      </picture>
+      <p className={`task-title${task.isCompleted ? " task-title-done" : ""}`}>
+        {task.title}
+      </p>
+    </div>
+  );
+};
 
 const compareByBooleans = (a, b) => {
   return a.isCompleted === b.isCompleted ? 0 : a.isCompleted ? 1 : -1;
