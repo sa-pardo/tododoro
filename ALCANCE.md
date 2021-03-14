@@ -5,6 +5,15 @@ Se busca que la aplicación tenga un flujo de trabajo altamente dogmático. Inci
 
 > Se prefiere un flujo de trabajo dogmatico aun si este afecta a la popularidad o cantidad de posibles usuarios del producto.
 
+## Todo
+
+A continuacion se presenta una lista con los servicios o caracteristicas de Tododoro que estan siendo actualmente desarrolladas o lo estaran en un futuro proximo.
+
+- [ ] Notificacion al momento de terminar un periodo de trabajo.
+- [ ] Animaciones al momento de seleccionar la tarea a trabajar.
+- [ ] Indicador de tipo de sesion pomodoro (trabajo o descanso).
+- [ ] Diseño responsivo.
+
 ## Fuera de alcance
 
 A continuacion se presenta una lista con servicios o caracteristicas que se encuentran fuera del alcance de esta aplicacion.
@@ -13,6 +22,7 @@ Que una caracteristica se encuentre en esta lista no quiere decir que este compl
 - Reportes (graficos, tablas, etc.).
 - Calendario o fechas de vencimiento para las tarea.
 - Tareas periodicas.
+- Manejo de la duracion de los tiempos de trabajo y descando del temporizador.
 
 ## Dentro de alcance
 
@@ -23,7 +33,6 @@ Las caracteristiscas presentes en esta lista se encuentran disponibles en la apl
 - Lista de tareas/TO-DO.
 - Dark Mode.
 - Notificación al momento de terminar un periodo de trabajo.
-- Manejo de la duracion de los tiempos de trabajo y descando del temporizador.
 
 ## Futuro posible
 
