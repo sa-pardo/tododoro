@@ -13,6 +13,7 @@ A continuacion se presenta una lista con los servicios o caracteristicas de Todo
 - [ ] Animaciones al momento de seleccionar la tarea a trabajar.
 - [ ] Indicador de tipo de sesion pomodoro (trabajo o descanso).
 - [ ] Diseño responsivo.
+- [ ] Links a github, blog o redes sociales
 
 ## Fuera de alcance
 
