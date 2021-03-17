@@ -43,7 +43,7 @@ const TaskInput = (props) => {
       <span
         className={`circle-size center-flex ${
           isFocused
-            ? "material-icons-round add-icon"
+            ? "material-icons-outlined add-icon"
             : "material-icons-outlined circle-icon"
         }`}
       >
