@@ -14,6 +14,7 @@ A continuacion se presenta una lista con los servicios o caracteristicas de Todo
 - [ ] Indicador de tipo de sesion pomodoro (trabajo o descanso).
 - [ ] Diseño responsivo.
 - [ ] Links a github, blog o redes sociales
+- [ ] Tarea seleccionada se auto-finaliza cuando termina el timer.
 
 ## Fuera de alcance
 
