@@ -15,6 +15,7 @@ A continuacion se presenta una lista con los servicios o caracteristicas de Todo
 - [ ] Diseño responsivo.
 - [ ] Links a github, blog o redes sociales
 - [ ] Tarea seleccionada se auto-finaliza cuando termina el timer.
+- [ ] Mostrar tiempo restante en titulo de la pestaña del navegador.
 - [ ] Esconder tareas finalizadas
 
 ## Fuera de alcance
