@@ -19,8 +19,10 @@ function Pomodoro(props) {
   useEffect(() => {
     if (isStarted) {
       let interval = setInterval(() => setTime(time - 1), 1000);
+      document.title = `${computeTime(time)} Tododoro`;
       if (time === 0) {
         setIsStarted(false);
+        document.title = "Tododoro";
         setTimeout(() => {
           if (sessionType === "work") {
             setSessionType("break");
