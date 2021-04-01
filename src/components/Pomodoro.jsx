@@ -3,6 +3,7 @@ import Play from "../assets/Play.svg";
 import Pause from "../assets/Pause.svg";
 import { ActiveTask } from "./Todo";
 
+const worker = new Worker("worker.js");
 function Pomodoro(props) {
   const [time, setTime] = useState(sessionDurations.workDuration);
   const [isStarted, setIsStarted] = useState(false);
@@ -18,7 +19,6 @@ function Pomodoro(props) {
 
   useEffect(() => {
     if (isStarted) {
-      const worker = new Worker("worker.js");
       worker.onmessage = (e) => {
         setTime(time - 1);
       };
