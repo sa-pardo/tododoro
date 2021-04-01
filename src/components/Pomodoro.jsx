@@ -18,7 +18,11 @@ function Pomodoro(props) {
 
   useEffect(() => {
     if (isStarted) {
-      let interval = setInterval(() => setTime(time - 1), 1000);
+      const worker = new Worker("worker.js");
+      worker.onmessage = (e) => {
+        setTime(time - 1);
+      };
+      worker.postMessage("start");
       document.title = `${computeTime(time)} Tododoro`;
       if (time === 0) {
         setIsStarted(false);
@@ -33,7 +37,7 @@ function Pomodoro(props) {
           }
         }, 1000);
       }
-      return () => clearInterval(interval);
+      return () => worker.postMessage("stop");
     }
   }, [isStarted, sessionType, time]);
 
