@@ -3,9 +3,14 @@ import Pomodoro from "./components/Pomodoro";
 import Todo from "./components/Todo";
 import { v4 as uuidv4 } from "uuid";
 
+let storedTasks = JSON.parse(localStorage.getItem("tasks"));
+if (storedTasks === null) {
+  storedTasks = [];
+}
 function App() {
   const [activeTask, setActiveTask] = useState({});
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(storedTasks);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
   const addTask = (event) => {
     event.preventDefault();
