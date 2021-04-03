@@ -308,13 +308,13 @@
 
 .left-credits {
   position: absolute;
-  top: 95%;
+  bottom: 1%;
   right: 53%;
   color: #ffffff;
 }
 
 .right-credits {
   position: absolute;
-  top: 95%;
+  bottom: 1%;
   left: 53%;
 }
